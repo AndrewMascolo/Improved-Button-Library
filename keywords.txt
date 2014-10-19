@@ -1,0 +1,25 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Button KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+SetStateAndTime	KEYWORD2
+onPressed	KEYWORD2
+onHold	KEYWORD2
+onReleased	KEYWORD2
+checkButton	KEYWORD2
+GetHeldTime	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+WAITING	LITERAL1
+PRESSED	LITERAL1
+HELD	LITERAL1
+RELEASED	LITERAL1
+SECONDS	LITERAL1
+MILLISECONDS	LITERAL1
+MICROSECONDS	LITERAL1
