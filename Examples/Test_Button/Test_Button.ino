@@ -46,7 +46,7 @@ void setup()
 
 void loop()
 {
-  byte myButton = B.checkButton(digitalRead(buttonPin));
+  byte myButton = B.checkButton(buttonPin);
   
   if (myButton) // if myButton is anything but 0, it is true
   {

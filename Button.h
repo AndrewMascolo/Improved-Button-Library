@@ -53,11 +53,13 @@ class Button
       F_off = OFF;
     }
 
-    byte checkButton(byte _button )
+    byte checkButton(byte _buttonPin )
     {
+	  static byte _button;
       // Button has not been pressed yet
       ButtonState = WAITING;
-
+      _button = digitalRead(_buttonPin);
+	  
       // First check to see if the button is pressed ie. State -> (LOW or HIGH)
       // and if it is different from it's lastState
       if (_button == State && lastState == !State)
