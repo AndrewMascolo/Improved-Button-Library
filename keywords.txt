@@ -7,6 +7,7 @@ Button KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 SetStateAndTime	KEYWORD2
+SetDebounceTime	KEYWORD2
 onPressed	KEYWORD2
 onHold	KEYWORD2
 onReleased	KEYWORD2
