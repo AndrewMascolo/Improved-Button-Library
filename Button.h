@@ -78,19 +78,20 @@ class Button
           F_on();
 
         // This prevents the code from entering this IF statement,
-        // until lastState is set to the perferred State again.
+        // until lastState is set to the preferred State again.
         lastState = State;
 
         // Button was pressed
         ButtonState = PRESSED;
       }
+	  
       if((_P ? micros() : millis()) - DBTime  >= DBInterval)
 	  {
         // button is still held down
         if (_button == State && lastState == State)
         {
           // check to see if button is held down for X seconds
-          if ( (heldTime = ((_P ? micros() : millis()) - onTime)) >= holdTime) // 1 second is 1,000 milliseconds or 1,000,000 microseconds
+          if ( (heldTime = ((_P ? micros() : millis()) - onTime)) >= (holdTime + DBInterval)) // 1 second is 1,000 milliseconds or 1,000,000 microseconds
           {
             if (*F_hold) // if something was assigned to that function, do it
               F_hold(); // if button is held down for X seconds, execute the HOLD function
