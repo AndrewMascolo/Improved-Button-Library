@@ -21,7 +21,7 @@ class Button
 {
   private:
     bool            State, lastState;
-    unsigned long   onTime, holdTime, heldTime, DBTime, DBInterval;
+    unsigned long   onTime, holdTime, heldTime, DBTime, DBInterval, RO_Time;
     byte            _P;
     byte            ButtonState;
     void            (*F_on)();
@@ -87,11 +87,17 @@ class Button
 	  
       if((_P ? micros() : millis()) - DBTime  >= DBInterval)
 	  {
+	    heldTime = 0;
         // button is still held down
         if (_button == State && lastState == State)
         {
+		  // Check for Rollover	  		  
+		  RO_Time = (_P ? micros() : millis()); // current time into RollOver variable
+		  if(RO_Time < onTime) // is the RollOver variable smaller than ontime?
+		    onTime = 0; // if yes,  reset ontime to zero
+			
           // check to see if button is held down for X seconds
-          if ( (heldTime = ((_P ? micros() : millis()) - onTime)) >= (holdTime + DBInterval)) // 1 second is 1,000 milliseconds or 1,000,000 microseconds
+          if ( (heldTime = (RO_Time - onTime)) >= (holdTime - DBInterval)) // 1 second is 1,000 milliseconds or 1,000,000 microseconds
           {
             if (*F_hold) // if something was assigned to that function, do it
               F_hold(); // if button is held down for X seconds, execute the HOLD function
@@ -117,6 +123,8 @@ class Button
 	{
 	  if(divisor > 0)
 	    return heldTime / divisor;
+      else 
+	    return -1;
 	}
 };// End Of CLass
 
