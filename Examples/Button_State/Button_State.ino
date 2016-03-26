@@ -1,6 +1,6 @@
 #include<Button.h>
 
-#define buttonPin 2
+#define buttonPin A0
 
 Button B(HIGH); // LOW = milliseconds, HIGH = microseconds, default is LOW
 //========================================================================================
@@ -26,16 +26,15 @@ void loop()
     switch (myButton)
     {
       case PRESSED:
-        Serial.print("Button was Pressed ");
+        Serial.println("Button was Pressed ");
         break;
       case HELD:
-        Serial.print("Buttons is Held:");
+        Serial.println("Buttons is Held:");
         break;
       case RELEASED:
-        Serial.print("Button was Released ");
+        Serial.println("Button was Released ");
         break;
       default: break;
     }
-    Serial.println(B.GetHeldTime(SECONDS));
   }
 }

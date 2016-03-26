@@ -20,7 +20,7 @@ void setup()
 void loop()
 {
   byte myButton = B.checkButton(buttonPin);
-  
+
   if (myButton) // if myButton is anything but 0, it is true
   {
     switch (myButton)
@@ -29,12 +29,12 @@ void loop()
         //Serial.println("Button was Pressed ");
         if (volumeLevel < 5) ++volumeLevel;
         break;
-        
+
       case HELD:
         //Serial.println("Buttons is Held:");
-        if((int(B.GetHeldTime(MILLISECONDS)) % 1000) == 0)
-        { 
-          if(!lock && volumeLevel > 0)
+        if ((uint32_t(B.GetHeldTime(MILLISECONDS)) % 1000) == 0)
+        {
+          if (!lock && volumeLevel > 0)
           {
             --volumeLevel;
             Serial.println(volumeLevel);
@@ -43,7 +43,7 @@ void loop()
         }
         else lock = false;
         break;
-        
+
       case RELEASED:
         //Serial.println("Button was Released ");
         Serial.println(volumeLevel);
